@@ -22,7 +22,7 @@
             --text-muted: #4a5568;
             
             /* Glassmorphism: White frosted glass */
-            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-bg: rgba(255, 255, 255, 0.85); /* Slightly more opaque for better mobile readability */
             --glass-border: rgba(255, 255, 255, 0.9);
             --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
             
@@ -61,17 +61,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            pointer-events: none; /* Allows clicking through after animation finishes */
+            pointer-events: none;
         }
 
-        /* The Door Panels */
         .door {
             position: absolute;
             top: 0;
             width: 50%;
             height: 100%;
-            background: #0f2027; /* Dark Security Color */
-            background: linear-gradient(to bottom, #203a43, #2c5364); /* Metallic Gradient */
+            background: linear-gradient(to bottom, #203a43, #2c5364);
             z-index: 2;
             display: flex;
             align-items: center;
@@ -80,19 +78,18 @@
 
         .door.left {
             left: 0;
-            border-right: 2px solid #00F3FF; /* Glowing Center Line */
+            border-right: 2px solid #00F3FF;
             box-shadow: 5px 0 20px rgba(0, 243, 255, 0.2);
             animation: slide-left 1.5s ease-in-out 2.5s forwards;
         }
 
         .door.right {
             right: 0;
-            border-left: 2px solid #00F3FF; /* Glowing Center Line */
+            border-left: 2px solid #00F3FF;
             box-shadow: -5px 0 20px rgba(0, 243, 255, 0.2);
             animation: slide-right 1.5s ease-in-out 2.5s forwards;
         }
 
-        /* Tech Pattern on Doors (Optional visual detail) */
         .door::after {
             content: '';
             position: absolute;
@@ -103,13 +100,13 @@
             opacity: 0.5;
         }
 
-        /* Center Loading Icon/Text */
         .loader-content {
             position: absolute;
             z-index: 3;
             color: #00F3FF;
             font-size: 2rem;
             text-align: center;
+            width: 90%; /* Prevent overflow on mobile */
             animation: fade-out 0.5s ease-out 2.2s forwards;
         }
 
@@ -119,26 +116,15 @@
             animation: pulse 1s infinite alternate;
         }
 
-        /* Animations */
-        @keyframes slide-left {
-            to { transform: translateX(-100%); }
-        }
-
-        @keyframes slide-right {
-            to { transform: translateX(100%); }
-        }
-
-        @keyframes fade-out {
-            to { opacity: 0; visibility: hidden; }
-        }
-
+        @keyframes slide-left { to { transform: translateX(-100%); } }
+        @keyframes slide-right { to { transform: translateX(100%); } }
+        @keyframes fade-out { to { opacity: 0; visibility: hidden; } }
         @keyframes pulse {
             from { text-shadow: 0 0 10px #00F3FF; transform: scale(1); }
             to { text-shadow: 0 0 25px #00F3FF; transform: scale(1.1); }
         }
 
-
-        /* --- DAYTIME CLOUD ANIMATION --- */
+        /* --- BACKGROUND CLOUDS --- */
         .sky-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
             perspective: 1000px; z-index: -1; pointer-events: none;
@@ -172,7 +158,7 @@
         /* --- LAYOUT --- */
         .content-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 25px; position: relative; z-index: 10; }
 
-        /* --- NAVIGATION (Clean White Pill) --- */
+        /* --- NAVIGATION --- */
         nav { 
             display: flex; justify-content: space-between; align-items: center; 
             padding: 12px 40px; margin-top: 25px;
@@ -180,6 +166,7 @@
             border-radius: 50px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             border: 1px solid rgba(255,255,255,1);
+            transition: all 0.3s ease;
         }
 
         .logo { font-size: 1.4rem; font-weight: 800; color: var(--text-main); letter-spacing: 0.5px; text-transform: uppercase; }
@@ -197,7 +184,7 @@
         .nav-links a:hover { color: var(--accent-blue); }
         .nav-links a:hover::after { width: 100%; }
 
-        /* --- GLASS PANEL (Base Style) --- */
+        /* --- COMPONENTS --- */
         .glass-panel {
             background: var(--glass-bg);
             backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
@@ -208,9 +195,7 @@
         }
         .glass-panel:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(31, 38, 135, 0.15); }
 
-        /* --- SECTION TITLES --- */
         .title-container { display: flex; justify-content: center; margin-bottom: 50px; }
-
         .section-title {
             display: inline-block; font-size: 1.8rem; font-weight: 700;
             text-transform: uppercase; letter-spacing: 1.5px;
@@ -227,12 +212,13 @@
 
         .content-section { padding: 60px 0; }
 
-        /* --- HERO SECTION --- */
-        .hero-section { height: 85vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+        /* --- HERO --- */
+        .hero-section { min-height: 85vh; display: flex; align-items: center; justify-content: center; text-align: center; }
         
         .hero-card {
             background: linear-gradient(to bottom right, #ffffff, #f0f8ff);
             border: 1px solid #e6e6e6;
+            width: 100%;
         }
         
         .hero-card h1 { 
@@ -258,19 +244,16 @@
         }
         .btn-outline:hover { background: var(--accent-blue); color: white; }
 
-        /* --- SKILLS SECTION --- */
+        /* --- SKILLS --- */
         .skills-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        @media (max-width: 768px) { .skills-wrapper { grid-template-columns: 1fr; } }
 
         .skill-category { color: var(--text-main); background: #fff; }
         .skill-category h3 {
             text-align: center; border-bottom: 2px solid #f0f0f0;
             padding-bottom: 15px; margin-bottom: 25px; font-size: 1.1rem; letter-spacing: 1px;
         }
-
         .skill-category:nth-of-type(1) { border-top: 5px solid var(--accent-gold); }
         .skill-category:nth-of-type(1) h3 { color: #8d7000; }
-
         .skill-category:nth-of-type(2) { border-top: 5px solid var(--accent-green); }
         .skill-category:nth-of-type(2) h3 { color: var(--accent-green); }
 
@@ -336,6 +319,57 @@
         .scrolling-text { display: inline-block; padding-left: 100%; animation: scroll 25s linear infinite; }
         .scrolling-text:hover { animation-play-state: paused; }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+        /* ========================================= */
+        /* === RESPONSIVE MEDIA QUERIES (MOBILE) === */
+        /* ========================================= */
+        
+        @media screen and (max-width: 768px) {
+            /* General Layout */
+            .content-wrapper { padding: 0 15px; }
+            .content-section { padding: 40px 0; }
+
+            /* Navigation: Stacked for Mobile */
+            nav {
+                flex-direction: column;
+                padding: 20px 15px;
+                border-radius: 20px;
+                gap: 15px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .nav-links a { font-size: 0.9rem; }
+
+            /* Hero Typography */
+            .hero-card { padding: 30px 20px; }
+            .hero-card h1 { font-size: 2.2rem; line-height: 1.2; }
+            .hero-card p { font-size: 1rem; margin-bottom: 25px; }
+            
+            /* Buttons */
+            .hero-btns {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+            }
+            .btn { width: 100%; display: block; text-align: center; }
+
+            /* Skills Grid */
+            .skills-wrapper { grid-template-columns: 1fr; }
+            
+            /* Panels & Cards */
+            .glass-panel { padding: 25px 20px; }
+            .section-title { font-size: 1.3rem; padding: 8px 25px; }
+            
+            /* Project Links */
+            .project-links { flex-direction: column; }
+            
+            /* Social Icons - slightly tighter */
+            .social-links { gap: 20px; }
+        }
     </style>
 </head>
 <body>
