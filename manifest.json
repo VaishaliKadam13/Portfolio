@@ -1,21 +1,25 @@
 {
   "name": "Manthan's Portfolio",
   "short_name": "Manthan",
+  "description": "Portfolio of a Full Stack Developer & AIML Student specializing in Generative AI and Data Annotation.",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#053163",
-  "theme_color": "#1e71b9",
-  "orientation": "portrait-primary",
+  "background_color": "#193991",
+  "theme_color": "#3b6acf",
+  "orientation": "any",
+  "scope": "/",
   "icons": [
     {
       "src": "Gemini_Generated_Image_l7zhtgl7zhtgl7zh.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "Gemini_Generated_Image_l7zhtgl7zhtgl7zh.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ]
 }
