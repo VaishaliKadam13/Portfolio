@@ -1,0 +1,21 @@
+{
+  "name": "Manthan's Portfolio",
+  "short_name": "Manthan",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#053163",
+  "theme_color": "#1e71b9",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "Gemini_Generated_Image_l7zhtgl7zhtgl7zh.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "Gemini_Generated_Image_l7zhtgl7zhtgl7zh.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
